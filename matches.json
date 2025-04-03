@@ -1,0 +1,22 @@
+[ {
+  "result" : "win",
+  "date" : [ 2024, 3, 22 ],
+  "map" : "Dust2",
+  "deaths" : 2,
+  "kills" : 1,
+  "assists" : 3,
+  "id" : 1
+}, {
+  "result" : "lose",
+  "date" : [ 2024, 3, 22 ],
+  "map" : "Mirage",
+  "deaths" : 2,
+  "kills" : 10,
+  "assists" : 13,
+  "id" : 2
+}, {
+  "result" : "win",
+  "date" : [ 2024, 5, 21 ],
+  "heroName" : "Lion",
+  "id" : 3
+} ]
