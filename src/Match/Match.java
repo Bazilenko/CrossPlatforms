@@ -1,13 +1,31 @@
 package Match;
 
+import Formatter.GameType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import java.time.LocalDate;
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type"
+)
+
 public abstract class Match {
+    static int generalId = 1;
+
+    int ID;
     String result;
     LocalDate date;
 
     public Match(LocalDate date, String result){
         this.date = date;
         this.result = result;
+        this.ID = generalId++;
+    }
+    public Match(){
+
     }
     public String getResult(){
         return this.result;
@@ -18,10 +36,13 @@ public abstract class Match {
     }
 
     public void setResult(String res){
-        if(res.equals("Vicrory") || res.equals("Loss") || res.equals("Tie"))
-            this.result = res;
-        System.out.println("Unknown result!");
+        this.result = res;
     }
+
+    public int getId() {
+        return ID;
+    }
+
 
     @Override
     public String toString(){

@@ -1,24 +1,29 @@
 package Match;
 
+import Formatter.GameType;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Date;
-
 public class CsMatch extends Match {
+    private String type;
     private String map;
     private int deaths = 0;
     private int kills = 0;
     private int assists = 0;
-    private CsMatchType type;
-    List<Match> matches;
-
-    public CsMatch(LocalDate date, String result, int kills, int deaths, int assists, String map, CsMatchType type) {
+    public CsMatch(LocalDate date, String result, int kills, int deaths, int assists, String map) {
         super(date, result);
         this.map = map;
         this.deaths = deaths;
         this.kills = kills;
         this.assists = assists;
-        this.type = type;
+        this.type = "cs";
+    }
+    public CsMatch(){
+
     }
 
     public void setKills(int kills) {
@@ -37,9 +42,6 @@ public class CsMatch extends Match {
         this.map = map;
     }
 
-    public void setType(CsMatchType type) {
-        this.type = type;
-    }
 
     public int getAssists() {
         return this.assists;
@@ -53,20 +55,17 @@ public class CsMatch extends Match {
         return this.kills;
     }
 
-    public String getMap() {return map;}
+    public String getMap() {return this.map;}
 
-    public CsMatchType getCsMatchType(){
-        return this.type;
-    }
 
     @Override
     public String toString(){
-        return (this.getDate() + " " +
+        return (this.getId() + " " +
+                this.getDate() + " " +
                 this.getMap() + " " +
                 this.getResult() + " " +
                 this.getKills() + " " +
                 this.getAssists() + " " +
-                this.getDeaths() + " " +
-                this.getCsMatchType());
+                this.getDeaths() + " ");
     }
 }

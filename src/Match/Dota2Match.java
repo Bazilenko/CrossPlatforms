@@ -1,31 +1,34 @@
 package Match;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
+
 import java.time.LocalDate;
 import java.util.Date;
-
 public class Dota2Match extends Match{
+    private String type;
     String heroName;
-    Dota2MatchType type;
 
-    public Dota2Match(LocalDate date, String result, String heroName, Dota2MatchType type){
+    public Dota2Match(LocalDate date, String result, String heroName){
         super(date, result);
         this.setHeroName(heroName);
-        this.setType(type);
+        this.type = "dota2";
     }
 
     public void setHeroName(String heroName) {
         this.heroName = heroName;
     }
 
-    public void setType(Dota2MatchType type) {
-        this.type = type;
-    }
-
-    public Dota2MatchType getType() {
-        return type;
-    }
 
     public String getHeroName() {
         return heroName;
+    }
+
+    @Override
+    public String toString(){
+        return (this.getId() + " " +
+                this.getDate() + " " +
+                this.getResult() + " " +
+                this.getHeroName() + " "
+                );
     }
 }
