@@ -2,6 +2,7 @@ package Gson;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import Match.*;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -49,7 +50,7 @@ public class Jackson {
     }
 
     public List<Match> readFromFile(String fileName){
-        List<Match> match = null;
+        List<Match> match = new ArrayList<Match>();
         try {
             match = mapper.readValue(new File(fileName), new TypeReference<List<Match>>(){});
         }

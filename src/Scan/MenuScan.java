@@ -1,7 +1,9 @@
 package Scan;
 
 import Creator.Creator;
+import Formatter.Formatter;
 import Formatter.GameType;
+import Match.Match;
 import Matches.MatchesManager;
 import Printer.MatchesPrinter;
 import Printer.MenuPrinter;
@@ -9,6 +11,7 @@ import Filter.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuScan {
@@ -21,6 +24,7 @@ public class MenuScan {
         String command;
         String type;
         GameType gameType;
+        Formatter formatter = new Formatter();
 
 
         do {
@@ -48,7 +52,9 @@ public class MenuScan {
                     startDate = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                     System.out.println("Enter start date for filter: ");
                     endDate = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                    filter.filterByDate(manager.getByType(gameType), startDate, endDate);
+                    List<Match> matchList = Filter.filterByDate(manager.getByType(gameType), startDate, endDate);
+                    MatchesPrinter printer = new MatchesPrinter(manager);
+                    printer.printMatchesInfo(matchList, formatter.getStatementHeader());
 
                 }
                 case "4" -> {

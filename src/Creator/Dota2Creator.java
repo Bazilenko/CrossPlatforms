@@ -9,6 +9,7 @@ import java.time.LocalDate;
 public class Dota2Creator extends Creator{
     public Dota2Match createDota2Match(){
         Formatter formatter = new Formatter();
+
         System.out.print("Enter date of played match (dd/MM/yyyy): ");
         LocalDate date = LocalDate.parse(scanner.nextLine(), formatter.getDateFormat());
 

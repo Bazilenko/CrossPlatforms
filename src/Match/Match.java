@@ -1,10 +1,11 @@
 package Match;
 
-import Formatter.GameType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import Formatter.*;
 
+import java.text.Format;
 import java.time.LocalDate;
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -19,10 +20,13 @@ public abstract class Match {
     String result;
     LocalDate date;
 
+    Formatter formatter;
+
     public Match(LocalDate date, String result){
         this.date = date;
         this.result = result;
         this.ID = generalId++;
+        formatter = new Formatter();
     }
     public Match(){
 
@@ -42,6 +46,10 @@ public abstract class Match {
     public int getId() {
         return ID;
     }
+
+    public void setFormatter(Formatter formatter){
+        this.formatter = formatter;
+    };
 
 
     @Override
